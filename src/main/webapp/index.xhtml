@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+<meta http-equiv="Contente-Type" content="test/html; charset=UTF-8" />
+<title>LOGIN</title>
+
+<style>
+
+    
+  .Bimage {
+	background-image: url("resources/img/logo.png");
+}  
+
+
+</style>
+
+<style>
+.centralizado {
+	display: grid;
+	justify-content: center; /* Centraliza horizontalmente */
+	align-items: center; /* Centraliza verticalmente */
+	margin: auto; /* Garante centralização no container */
+	height: 100vh; /* Ocupa a altura total da tela */
+}
+</style>
+
+
+
+
+</h:head>
+
+
+
+<h:body styleClass="Bimage">
+
+
+
+	<h:form id="formLogin"  styleClass="centralizado"  >
+
+		<h1  style="color: white" >ACESSO A CADASTRO DE INTEGRADOS</h1>
+		
+		<h:panelGrid columns="2"   >
+		
+		<h:outputLabel value="Login"  style="color: white" />
+		<h:inputText value="#{pessoaBean.pessoa.login}"  pt:placeholder="apenas letras minusculas!" />
+		
+		<h:outputLabel value="Senha"   style="color: white" />
+		<h:inputSecret  value="#{pessoaBean.pessoa.senha}"  pt:placeholder="digite apenas numeros!"/>
+		
+		<h:commandButton value="Acessar"  action="#{pessoaBean.logar}"/>
+				
+		
+		</h:panelGrid>
+		
+
+	</h:form>
+
+
+
+
+</h:body>
+
+
+</html>

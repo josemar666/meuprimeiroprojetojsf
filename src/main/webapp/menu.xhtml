@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	>
+
+
+
+	<h:form id="menu">
+	
+	
+	<h:commandLink value="ADMINISTRAÇÃO"
+			style="margin-left:1cm;color:white;" action="pagina"
+			rendered="#{pessoaBean.permiteAcessoComponentes('ADMINISTRADOR')}" />
+		<h:commandLink value="LANÇAMENTOS"
+			style="margin-left:1cm;color:white;" action="lancamento" />
+		<h:commandLink value="TROCAR DE USUÁRIO"
+			style="margin-left:1cm; color:white;" action="#{pessoaBean.deslogar}" />
+	
+	
+		
+
+	</h:form>
+
+
+
+
+
+
+</html>
