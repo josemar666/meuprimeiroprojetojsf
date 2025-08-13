@@ -46,7 +46,7 @@ public class FilterAutenticacao implements Filter , Serializable {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf");
 			dispatcher.forward(request, response);
 			
-			return;			
+			return ;			
 			
 		}else {
 			

@@ -64,7 +64,7 @@ public class DaoGeneric<T> implements Serializable{
 		entityManager.close();
 
 	}
-
+	@SuppressWarnings("unchecked")
 	public List<T> getListEntity(Class<T> entidade) {
 
 		EntityManager entityManager = JpaUtil.getEntityManager();

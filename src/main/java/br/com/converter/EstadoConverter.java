@@ -23,6 +23,10 @@ public class EstadoConverter implements Converter, Serializable {
 	@Override/* retornar um objeto inteiro*/
 	public Object getAsObject(FacesContext context, UIComponent component, String codigoEstado) {
 		
+	
+		
+		
+		
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		
 		EntityTransaction entityTransaction = entityManager.getTransaction();

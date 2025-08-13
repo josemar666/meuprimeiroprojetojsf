@@ -4,7 +4,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui = "http://java.sun.com/jsf/facelets"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	 xmlns:b="http://bootsfaces.net/ui"
+	 xmlns:p="http://primefaces.org/ui"
+	>
 <h:head>
 <meta http-equiv="Contente-Type" content="test/html; charset=UTF-8" />
 
@@ -171,9 +174,9 @@
 
 
 			<h:outputLabel value="login :" style="color:white" />
-			<h:inputText value="#{pessoaBean.pessoa.login}"  pt:placeholder="digite apenas letras minusculas!" />
+			<h:inputText value="#{pessoaBean.pessoa.login}"  required="true" />
 			<h:outputLabel value="senha :" style="color:white" />
-			<h:inputSecret value="#{pessoaBean.pessoa.senha}"  pt:placeholder="digite apenas numeros!" />
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}"  required="true"/>
 
 			<h:outputLabel value="Perfil" style="color:white" />
 			<h:selectOneMenu id="Perfil" value="#{pessoaBean.pessoa.perfilUser}"
@@ -211,15 +214,15 @@
 					
 			 
 			<h:outputLabel value="Estados : "  style="color:white"/>
-			<h:selectOneMenu value="#{pessoaBean.pessoa.estados}"   immediate="true" id="comboEstados" >
+			<h:selectOneMenu value="#{pessoaBean.pessoa.estados}"   immediate="true" id="comboEstados" converter="estadoConverter" >
 			<f:selectItem itemLabel="--[SELECIONE]--" noSelectionOption="true"/>
 			<f:selectItems value="#{pessoaBean.estados}" />	
 			<f:ajax event="change" execute="@this"  render="comboCidade" listener="#{pessoaBean.carregaCidades}"   />		
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="Cidades :" style="color:white" />			
-			<h:selectOneMenu  value="#{pessoaBean.pessoa.cidades}"  immediate="true"  id="comboCidade"  >
-			<f:selectItem noSelectionOption="true" itemLabel="--SELECIONE--" />
+			<h:selectOneMenu  value="#{pessoaBean.pessoa.cidades}"  immediate="true"  id="comboCidade"  converter="cidadeConverter" >
+			<f:selectItem   itemLabel="--SELECIONE--" noSelectionOption="true"  />
 			<f:selectItems value="#{pessoaBean.cidades}" />
 			
 			</h:selectOneMenu>			
@@ -297,7 +300,7 @@
 				<h:column>
 					<f:facet name="header"> AÇÃO </f:facet>
 
-					<h:commandLink title="editar" style="color:white">
+					<h:commandLink title="editar" style="color:white" immediate="true" action="#{pessoaBean.editar}" >
 
 						<h:graphicImage value="/resources/img/editar.ico" />
 						<f:setPropertyActionListener value="#{pessoa}"

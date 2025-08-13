@@ -20,6 +20,9 @@ public class CidadesConverter implements Converter, Serializable {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String codigoCidade) {
+		
+	
+		
 EntityManager entityManager = JpaUtil.getEntityManager();
 		
 		EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -28,7 +31,7 @@ EntityManager entityManager = JpaUtil.getEntityManager();
 		
 		Cidades cidade = (Cidades) entityManager.find(Cidades.class, Long.parseLong(codigoCidade));
 		
-		return cidade;
+		return cidade; 
 	}
 
 	@Override
@@ -36,7 +39,7 @@ EntityManager entityManager = JpaUtil.getEntityManager();
 	
 		if (cidade == null || (cidade.toString() != null && cidade.toString().isEmpty())){
 			System.out.println("cidade conver vazio 2 ");
-			return "";
+			return null;
 		}
 		
 		if (cidade instanceof Cidades){

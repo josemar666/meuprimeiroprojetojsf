@@ -91,6 +91,8 @@ public class PessoaBean implements Serializable {
 	public String limpar() {
 	
   pessoa = new Pessoa();
+  
+
     	  
     	  return "";
 		
@@ -156,9 +158,7 @@ public class PessoaBean implements Serializable {
 		this.jpaUtil = jpaUtil;
 	}
 
-	public void setEstados(List<SelectItem> estados) {
-		this.estados = estados;
-	}
+	
 
 	public void pesquisaCep(AjaxBehaviorEvent event) {
 		
@@ -235,8 +235,7 @@ public class PessoaBean implements Serializable {
 	   return "index.jsf";
    }
 	
-	
-	public String logar() {
+   public String logar() {
 		
 		Pessoa pessoaUser = idaoPessoa.consultarUsuario(pessoa.getLogin(), pessoa.getSenha());
 		
@@ -285,7 +284,6 @@ public class PessoaBean implements Serializable {
 	@SuppressWarnings("unchecked")
 	public void carregaCidades(AjaxBehaviorEvent event) {
 		
-		
 		 
 		
 		Estados estado =   (Estados)  ((HtmlSelectOneMenu) event.getSource()).getValue();
@@ -307,11 +305,42 @@ public class PessoaBean implements Serializable {
 				}
 				  
 				  setCidades(selectItemscidades);
+				  
 				   }
+				    
 				   
-			  }
-			  
+			  } 
 	
+	@SuppressWarnings("unchecked")
+	public String editar() {
+		
+		if(pessoa.getCidades() != null) {
+			
+			Estados estado = pessoa.getCidades().getEstados();
+			pessoa.setEstados(estado);
+			
+			 List<Cidades> cidades = JpaUtil.getEntityManager().createQuery("from Cidades where estados.id = " + estado.getId()).getResultList();
+			  
+			  List<SelectItem>  selectItemscidades = new ArrayList<SelectItem>();
+			  
+			  for (Cidades cidade : cidades ) {
+				
+				  selectItemscidades.add(new SelectItem(cidade,cidade.getNome()));
+			}
+			  
+			  setCidades(selectItemscidades);
+			   }
+			
+			return"";
+			
+		} 
+	
+		
+	
+	public void setEstados(List<SelectItem> estados) {
+		this.estados = estados;
+	}
+
 	public List<SelectItem> getCidades() {
 		return cidades;
 	}

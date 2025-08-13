@@ -61,7 +61,7 @@ public class IDaoPessoaImple implements IDaoPessoa ,Serializable {
 	    EntityManager entityManager = JpaUtil.getEntityManager();
 	    EntityTransaction entityTransaction = entityManager.getTransaction();
 
-	    List<SelectItem> selectItems = new ArrayList<>();
+	    List<SelectItem> selectItems = new ArrayList<SelectItem>();
 
 	    try {
 	        entityTransaction.begin();
