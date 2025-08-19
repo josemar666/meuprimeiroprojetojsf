@@ -42,7 +42,7 @@
 
 	<h1 style="color: white">CADASTRO DE INTEGRADOS</h1>
 
-	<h:form id="formPessoa"
+	<h:form id="formPessoa" enctype="multipart/form-data"
 		rendered="#{pessoaBean.permiteAcessoComponentes('ADMINISTRADOR')}">
 		
 	
@@ -67,8 +67,11 @@
 
 
 			<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"  />
-
-
+             
+             <h:outputLabel value="Foto : "  style="color:white" />
+            <h:inputFile id="foto" value="#{pessoaBean.arquivoFoto}" />
+            
+            
 
 			<h:outputLabel value="nome:  " style="color:white" />
 			<h:inputText value="#{pessoaBean.pessoa.nome}"  pt:placeholder="digite apenas letras!"  

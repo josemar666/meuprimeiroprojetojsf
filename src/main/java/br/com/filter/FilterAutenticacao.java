@@ -3,6 +3,7 @@ package br.com.filter;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -21,6 +22,20 @@ import br.com.jpautil.JpaUtil;
 public class FilterAutenticacao implements Filter , Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	
+	@Inject
+	private JpaUtil jpaUtil;
+	
+	
+
+	public JpaUtil getJpaUtil() {
+		return jpaUtil;
+	}
+
+	public void setJpaUtil(JpaUtil jpaUtil) {
+		this.jpaUtil = jpaUtil;
+	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

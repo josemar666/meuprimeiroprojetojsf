@@ -4,12 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,6 +82,17 @@ public class Pessoa implements Serializable {
 	private String ddd;
 	
 	private String siafi;
+	
+	
+	@Column(columnDefinition="text")//tipo texto para gravar arquivos em base 64 que é tamanho miniatura
+	private String fotoIconBase64;
+	
+	private String extensao;//extensão jpg,pnh,jpeg.
+	
+	
+	@Lob//grava arquivos no banco de dados de tamanho original
+	@Basic(fetch =FetchType.LAZY)
+	private byte[] fotoIconBase640Original;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	private Cidades cidades;
@@ -351,7 +365,29 @@ public class Pessoa implements Serializable {
 		this.estados = estados;
 	}
 	
-	
+	public String getFotoIconBase64() {
+		return fotoIconBase64;
+	}
+
+	public void setFotoIconBase64(String fotoIconBase64) {
+		this.fotoIconBase64 = fotoIconBase64;
+	}
+
+	public String getExtensao() {
+		return extensao;
+	}
+
+	public void setExtensao(String extensao) {
+		this.extensao = extensao;
+	}
+
+	public byte[] getFotoIconBase640Original() {
+		return fotoIconBase640Original;
+	}
+
+	public void setFotoIconBase640Original(byte[] fotoIconBase640Original) {
+		this.fotoIconBase640Original = fotoIconBase640Original;
+	}
 
 	@Override//usa esse método para diferenciar os registros(no banco de dados) do objeto pessoa por ID
 	public int hashCode() {
